@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import '../App.css';
 import { FaInstagramSquare } from "react-icons/fa";
 // import appStore from "../assets/appStore.png";
@@ -9,6 +9,13 @@ import appleStore from "../assets/appleStore.png";
 
 
 const Login =() => {
+
+    const [username, setUsername] = useState("");
+    const[Password, setPassword] = useState("");
+
+    const loginHandler = () => {
+        alert(`Username: ${username} Password: ${Password}`);
+    }
     return(
         <div className="login-container">
         
@@ -17,45 +24,56 @@ const Login =() => {
         
         <div className="box1-logo">
         <img src={instaFont} alt="" className="instaFont" />
-        {/* <FaInstagramSquare /> */}
+        
         
         
         </div>
         
         <div className="inputBox">
         <input type="text" 
-        placeholder="Phone number, username, or email" />
+        placeholder="Phone number, username, or email" 
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}/>
         <div/>
         
         <div className="inputBox">
-        <input type="text" placeholder="Password" />
+        <input type="text" placeholder="Password" 
+        value={Password}
+        onChange={(e) => setPassword(e.target.value)}/>
         </div>
         
         <div className="loginButton">
-        <button className="login">Login</button>
+        <button className="login"
+        onClick={loginHandler}>Login</button>
         </div>
+
         <div className="line">
             <div className="line1"></div>
             <div className="or">or</div>
             <div className="line2"></div>
         </div>
+
         <div className="fb">
             <span>
             <img src={facebook} alt="" className="facebook"/>
             </span>
-            <p>Log in with Facebook</p>
+            <p className="fbText">Log in with Facebook</p>
         </div>
+
         <div className="forgotPassword">
-        <p>Forgot Password?</p>
+        <a href="">Forgot Password?</a>
+       
+
         </div>
+
         </div>
 
 
         <div className="box2">
-        <p>Don't have an account?
-        <span className="signUp">
-        Sign up
-        </span>
+        <p>Don't have an account? 
+       <a href="signup">
+       Sign up
+       </a>
         </p>
         </div>
 
